@@ -1,0 +1,49 @@
+@startuml
+
+class Transporte {
+  - tipo: String
+  - valor: double
+  + Transporte(tipo: String, valor: double)
+}
+
+class Hospedagem {
+  - descricao: String
+  - valorDiaria: double
+  + Hospedagem(descricao: String, valorDiaria: double)
+}
+
+class PacoteViagem {
+  - transporte: Transporte
+  - hospedagem: Hospedagem
+  - destino: String
+  - dias: int
+  + PacoteViagem(transporte: Transporte, hospedagem: Hospedagem, destino: String, dias: int)
+  + calcularTotalHospedagem(): double
+  + calcularValorComMargem(lucroPercent: double): double
+  + calcularTotalPacote(lucroPercent: double, taxaAdicional: double): double
+}
+
+class Venda {
+  - cliente: String
+  - formaPagamento: String
+  - pacote: PacoteViagem
+  + Venda(cliente: String, formaPagamento: String, pacote: PacoteViagem)
+  + mostrarTotais(cotacaoDolar: double)
+  + converterParaReais(valorDolar: double, cotacao: double): double
+}
+
+class Main {
+  + main(String[] args)
+  + escolherTipoTransporte(): String
+  + escolherEstrelasHospedagem(): int
+}
+
+Main --> Transporte : "usa"
+Main --> Hospedagem : "usa"
+Main --> PacoteViagem : "usa"
+Main --> Venda : "usa"
+Venda --> PacoteViagem : "contém"
+PacoteViagem --> Transporte : "tem"
+PacoteViagem --> Hospedagem : "tem"
+
+@enduml

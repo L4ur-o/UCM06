@@ -7,7 +7,7 @@ public class Hospedagem {
         this.valorDiaria = valorDiaria;
     }
 
-    public String getDescricao() {
+    public String getDescricao() { // Hotel chique
         return descricao;
     }
 

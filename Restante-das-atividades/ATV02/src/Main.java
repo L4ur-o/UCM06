@@ -97,7 +97,7 @@ public class Main {
                 }
             } else {
                 System.out.println("Entrada inválida. Digite um número.");
-                sc.next();  // Limpar a entrada inválida
+                sc.next();
             }
         }
 
